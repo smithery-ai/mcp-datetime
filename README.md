@@ -4,7 +4,7 @@
 [![MCP Version](https://img.shields.io/badge/mcp-1.1.1-green.svg)](https://github.com/anaisbetts/mcp)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-English | [日本語](README.md)
+English | [日本語](README_ja.md)
 
 A datetime formatting service implemented as an MCP server for the Claude Desktop Application. Supports generation of datetime strings in various formats.
 
