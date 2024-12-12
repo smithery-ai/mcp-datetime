@@ -8,42 +8,42 @@ from mcp.server import Server
 from mcp.server.stdio import stdio_server
 from mcp.types import EmbeddedResource, ImageContent, TextContent, Tool
 
-# ログの準備
+# Prepare logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("mcp-datetime")
 
-# サーバの準備
+# Prepare server
 server = Server("mcp-datetime")
 
 
-# 日時フォーマット関数
+# Datetime formatting function
 def format_datetime(format_type: str) -> str:
-    # 毎回新しい時刻オブジェクトを生成し、タイムゾーンを考慮
+    # Generate a new time object each time, considering timezone
     current_time = datetime.now(timezone.utc).astimezone()
     formats = {
-        # 基本的な日付フォーマット
+        # Basic date formats
         "date": "%Y-%m-%d",  # 2024-12-10
         "date_slash": "%Y/%m/%d",  # 2024/12/10
         "date_jp": "%Y年%m月%d日",  # 2024年12月10日
-        # 基本的な日時フォーマット
+        # Basic datetime formats
         "datetime": "%Y-%m-%d %H:%M:%S",  # 2024-12-10 00:54:01
         "datetime_jp": "%Y年%m月%d日 %H時%M分%S秒",  # 2024年12月10日 00時54分01秒
         "datetime_t": "%Y-%m-%dT%H:%M:%S",  # 2024-12-10T00:54:01
-        # ファイル名やID用のコンパクトフォーマット
+        # Compact formats for filenames or IDs
         "compact": "%Y%m%d%H%M%S",  # 20241210005401
         "compact_date": "%Y%m%d",  # 20241210
         "compact_time": "%H%M%S",  # 005401
-        # ファイル名用フォーマット
+        # Filename formats
         "filename_md": "%Y%m%d%H%M%S.md",  # 20241210005401.md
         "filename_txt": "%Y%m%d%H%M%S.txt",  # 20241210005401.txt
         "filename_log": "%Y%m%d%H%M%S.log",  # 20241210005401.log
-        # ISO 8601フォーマット
+        # ISO 8601 formats
         "iso": "%Y-%m-%dT%H:%M:%S%z",  # 2024-12-10T00:54:01+0900
         "iso_basic": "%Y%m%dT%H%M%S%z",  # 20241210T005401+0900
-        # ログ用フォーマット
+        # Log formats
         "log": "%Y-%m-%d %H:%M:%S.%f",  # 2024-12-10 00:54:01.123456
         "log_compact": "%Y%m%d_%H%M%S",  # 20241210_005401
-        # 時刻のみのフォーマット
+        # Time-only formats
         "time": "%H:%M:%S",  # 00:54:01
         "time_jp": "%H時%M分%S秒",  # 00時54分01秒
     }
@@ -58,7 +58,7 @@ def format_datetime(format_type: str) -> str:
         raise RuntimeError(f"Error formatting date: {str(e)}") from e
 
 
-# 利用可能なツール一覧の取得
+# Get list of available tools
 @server.list_tools()
 async def list_tools() -> list[Tool]:
     return [
@@ -99,7 +99,7 @@ Available formats:
     ]
 
 
-# ツールの呼び出し
+# Tool call handler
 @server.call_tool()
 async def call_tool(
     name: str, arguments: Any
@@ -118,7 +118,7 @@ async def call_tool(
         raise ValueError(f"Unknown tool: {name}")
 
 
-# メイン
+# Main function
 async def main():
     async with stdio_server() as (read_stream, write_stream):
         await server.run(
