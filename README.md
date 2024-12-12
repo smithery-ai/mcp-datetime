@@ -91,40 +91,60 @@ If you need to install the package directly (e.g., for development or source cod
 
 ## Basic Examples
 
-```
-# Standard datetime format
-call datetime-service.get_datetime {"format": "datetime"}
-# Result: 2024-12-10 00:54:01
-# Japanese format
-call datetime-service.get_datetime {"format": "datetime_jp"}
-# Result: 2024年12月10日 00時54分01秒
-# Filename format
-call datetime-service.get_datetime {"format": "filename_md"}
-# Result: 20241210005401.md
-```
+- Command format
+
+  ```
+  # Standard datetime format
+  call datetime-service.get_datetime {"format": "datetime"}
+  # Result: 2024-12-10 00:54:01
+
+  # Japanese format
+  call datetime-service.get_datetime {"format": "datetime_jp"}
+  # Result: 2024年12月10日 00時54分01秒
+
+  # Filename format
+  call datetime-service.get_datetime {"format": "filename_md"}
+  # Result: 20241210005401.md
+  ```
+
+- Claude Desktop App prompt examples
+
+  - User
+
+    ```
+    Please tell me the current time in date_slash format
+    ```
+
+  - Claude
+
+    ```
+    I'll get the current date in date_slash format.
+
+    The current date is 2024/12/12
+    ```
 
 ## Supported Formats
 
-| Format Name  | Example                     | Description                  |
-| ------------ | --------------------------- | ---------------------------- |
-| date         | 2024-12-10                  | Standard date format         |
-| date_slash   | 2024/12/10                  | Date with slashes            |
-| date_jp      | 2024年12月10日              | Japanese date format         |
-| datetime     | 2024-12-10 00:54:01         | Standard datetime            |
-| datetime_jp  | 2024年12月10日 00時54分01秒 | Japanese datetime            |
-| datetime_t   | 2024-12-10T00:54:01         | DateTime with T separator    |
-| compact      | 20241210005401              | Compact format for IDs       |
-| compact_date | 20241210                    | Compact date only            |
-| compact_time | 005401                      | Compact time only            |
-| filename_md  | 20241210005401.md           | Markdown filename            |
-| filename_txt | 20241210005401.txt          | Text filename                |
-| filename_log | 20241210005401.log          | Log filename                 |
-| iso          | 2024-12-10T00:54:01+0900    | ISO 8601 format              |
-| iso_basic    | 20241210T005401+0900        | Basic ISO format             |
-| log          | 2024-12-10 00:54:01.123456  | Log format with microseconds |
-| log_compact  | 20241210_005401             | Compact log format           |
-| time         | 00:54:01                    | Time only                    |
-| time_jp      | 00時54分01秒                | Japanese time format         |
+| Format Name  | Example                     | Description              |
+| ------------ | --------------------------- | ------------------------ |
+| date         | 2024-12-10                  | Standard date format     |
+| date_slash   | 2024/12/10                  | Date with slashes       |
+| date_jp      | 2024年12月10日              | Japanese date format    |
+| datetime     | 2024-12-10 00:54:01         | Standard datetime       |
+| datetime_jp  | 2024年12月10日 00時54分01秒 | Japanese datetime       |
+| datetime_t   | 2024-12-10T00:54:01         | DateTime with T separator|
+| compact      | 20241210005401              | Compact format for IDs  |
+| compact_date | 20241210                    | Compact date only       |
+| compact_time | 005401                      | Compact time only       |
+| filename_md  | 20241210005401.md           | Markdown filename       |
+| filename_txt | 20241210005401.txt          | Text filename          |
+| filename_log | 20241210005401.log          | Log filename           |
+| iso          | 2024-12-10T00:54:01+0900    | ISO 8601 format        |
+| iso_basic    | 20241210T005401+0900        | Basic ISO format       |
+| log          | 2024-12-10 00:54:01.123456  | Log format with microseconds|
+| log_compact  | 20241210_005401             | Compact log format     |
+| time         | 00:54:01                    | Time only              |
+| time_jp      | 00時54分01秒                | Japanese time format   |
 
 ## Debugging
 
@@ -132,16 +152,16 @@ Since MCP servers run over stdio, debugging can be challenging. We recommend usi
 
 - Using PyPI package
 
-```
-npx @modelcontextprotocol/inspector uvx mcp-datetime
-```
+  ```
+  npx @modelcontextprotocol/inspector uvx mcp-datetime
+  ```
 
 - Using downloaded source code from GitHub
 
-```
-git clone https://github.com/ZeparHyfar/mcp-datetime.git
-npx @modelcontextprotocol/inspector uvx --directory ./mcp-datetime run mcp-datetime
-```
+  ```
+  git clone https://github.com/ZeparHyfar/mcp-datetime.git
+  npx @modelcontextprotocol/inspector uvx --directory ./mcp-datetime run mcp-datetime
+  ```
 
 ## License
 

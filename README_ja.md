@@ -91,17 +91,37 @@ Claude Desktop Application用のMCPサーバーとして実装された日時フ
 
 ## 基本的な使用例
 
-```
-# 標準的な日時形式
-call datetime-service.get_datetime {"format": "datetime"}
-# 結果: 2024-12-10 00:54:01
-# 日本語形式
-call datetime-service.get_datetime {"format": "datetime_jp"}
-# 結果: 2024年12月10日 00時54分01秒
-# ファイル名形式
-call datetime-service.get_datetime {"format": "filename_md"}
-# 結果: 20241210005401.md
-```
+- コマンド形式
+
+  ```
+  # 標準的な日時形式
+  call datetime-service.get_datetime {"format": "datetime"}
+  # 結果: 2024-12-10 00:54:01
+
+  # 日本語形式
+  call datetime-service.get_datetime {"format": "datetime_jp"}
+  # 結果: 2024年12月10日 00時54分01秒
+
+  # ファイル名形式
+  call datetime-service.get_datetime {"format": "filename_md"}
+  # 結果: 20241210005401.md
+  ```
+
+- Claudeデスクトップアプリのプロンプト例
+
+  - User
+
+    ```
+    今の時刻をdate_slash形式で教えてください
+    ```
+
+  - Claude
+
+    ```
+    date_slash形式で現在の日付を取得します。
+
+    現在の日付は 2024/12/12 です。
+    ```
 
 ## サポートされている形式
 
@@ -132,16 +152,16 @@ MCPサーバーはstdioを介して実行されるため、デバッグが難し
 
 - PyPIパッケージを使用する場合
 
-```
-npx @modelcontextprotocol/inspector uvx mcp-datetime
-```
+  ```
+  npx @modelcontextprotocol/inspector uvx mcp-datetime
+  ```
 
 - GitHubからダウンロードしたソースコードを使用する場合
 
-```
-git clone https://github.com/ZeparHyfar/mcp-datetime.git
-npx @modelcontextprotocol/inspector uvx --directory ./mcp-datetime run mcp-datetime
-```
+  ```
+  git clone https://github.com/ZeparHyfar/mcp-datetime.git
+  npx @modelcontextprotocol/inspector uvx --directory ./mcp-datetime run mcp-datetime
+  ```
 
 ## ライセンス
 
