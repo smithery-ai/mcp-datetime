@@ -8,6 +8,16 @@
 
 Claude Desktop Application用のMCPサーバーとして実装された日時フォーマットサービスです。様々な形式での日時文字列生成をサポートしています。
 
+> **注意**: このパッケージはmacOSでのみ動作確認を行っています。Windowsでの互換性は未確認です。
+
+## 前提条件
+
+mcp-datetimeを使用する前に、以下のツールがインストールされていることを確認してください：
+
+- Python 3.12以降
+- uv（Pythonパッケージインストーラー）
+- uvx（Pythonパッケージ実行ツール）
+
 ## 特徴
 
 - ✨ 各種の日時フォーマットをサポート
@@ -31,25 +41,21 @@ Claude Desktop Application用のMCPサーバーとして実装された日時フ
 
 設定ファイルに以下を追加してください：
 
-- 設定ファイルの場所:
+設定ファイルの場所（macOS）:
+`~/Library/Application Support/Claude/claude_desktop_config.json`
 
-  - MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-  - Windows: `%APPDATA%/Claude/claude_desktop_config.json`
-
-  ```json
-  {
-    "mcpServers": {
-      "mcp-datetime": {
-        "command": "uvx",
-        "args": ["mcp-datetime"]
-      }
+```json
+{
+  "mcpServers": {
+    "mcp-datetime": {
+      "command": "uvx",
+      "args": ["mcp-datetime"]
     }
   }
-  ```
+}
+```
 
 ## インストールについて
-
-通常はインストール作業は必要ありません。Claude デスクトップアプリの設定ファイルに設定を追加するだけで使用できます。 uvxが必要に応じてパッケージを自動的にダウンロードし実行します。
 
 ソースコードの確認や開発目的など、パッケージを直接インストールする必要がある場合は、以下の方法でインストールできます：
 
@@ -67,7 +73,7 @@ Claude Desktop Application用のMCPサーバーとして実装された日時フ
   pip install -e .
   ```
 
-- 手動でインストールした場合の`claude_desktop_config.json`
+- 手動でインストールした場合の`claude_desktop_config.json`の例
 
   ```json
   {
@@ -83,11 +89,8 @@ Claude Desktop Application用のMCPサーバーとして実装された日時フ
   }
   ```
 
-  - "/path/to/your/python"は実際のPythonインタプリタのパスに置き換えてください。
-
-  - 例：
-    - MacOS: "/usr/local/bin/python3" や "/Users/username/.pyenv/versions/3.12.0/bin/python3"
-    - Windows: "C:\Python312\python.exe"
+  "/path/to/your/python"は実際のPythonインタプリタのパスに置き換えてください
+  > （例："/usr/local/bin/python3" や "/Users/username/.pyenv/versions/3.12.0/bin/python3"）
 
 ## 基本的な使用例
 

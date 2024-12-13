@@ -8,6 +8,16 @@ English | [日本語](README_ja.md)
 
 A datetime formatting service implemented as an MCP server for the Claude Desktop Application. Supports generation of datetime strings in various formats.
 
+> **Note**: This package has been tested only on macOS. Windows compatibility has not been verified.
+
+## Prerequisites
+
+Before using mcp-datetime, ensure you have the following tools installed:
+
+- Python 3.12 or later
+- uv (Python package installer)
+- uvx (Python package runner)
+
 ## Features
 
 - ✨ Support for various datetime formats
@@ -31,25 +41,21 @@ The server implements one tool:
 
 Add the following to your config file:
 
-- Config file location:
+Config file location (macOS):
+`~/Library/Application Support/Claude/claude_desktop_config.json`
 
-  - MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-  - Windows: `%APPDATA%/Claude/claude_desktop_config.json`
-
-  ```json
-  {
-    "mcpServers": {
-      "mcp-datetime": {
-        "command": "uvx",
-        "args": ["mcp-datetime"]
-      }
+```json
+{
+  "mcpServers": {
+    "mcp-datetime": {
+      "command": "uvx",
+      "args": ["mcp-datetime"]
     }
   }
-  ```
+}
+```
 
 ## About Installation
-
-No installation is required for normal use. You can use this package by simply adding the configuration to your Claude Desktop App config file. The uvx command will automatically download and execute the package as needed.
 
 If you need to install the package directly (e.g., for development or source code inspection), you can use one of these methods:
 
@@ -67,7 +73,7 @@ If you need to install the package directly (e.g., for development or source cod
   pip install -e .
   ```
 
-- `claude_desktop_config.json` for manual installation
+- Example `claude_desktop_config.json` for manual installation
 
   ```json
   {
@@ -83,11 +89,8 @@ If you need to install the package directly (e.g., for development or source cod
   }
   ```
 
-  - Replace "/path/to/your/python" with your actual Python interpreter path.
-
-  - Examples:
-    - MacOS: "/usr/local/bin/python3" or "/Users/username/.pyenv/versions/3.12.0/bin/python3"
-    - Windows: "C:\Python312\python.exe"
+  Replace "/path/to/your/python" with your actual Python interpreter path
+  > e.g., "/usr/local/bin/python3" or "/Users/username/.pyenv/versions/3.12.0/bin/python3"
 
 ## Basic Examples
 
@@ -125,26 +128,26 @@ If you need to install the package directly (e.g., for development or source cod
 
 ## Supported Formats
 
-| Format Name  | Example                     | Description              |
-| ------------ | --------------------------- | ------------------------ |
-| date         | 2024-12-10                  | Standard date format     |
-| date_slash   | 2024/12/10                  | Date with slashes       |
-| date_jp      | 2024年12月10日              | Japanese date format    |
-| datetime     | 2024-12-10 00:54:01         | Standard datetime       |
-| datetime_jp  | 2024年12月10日 00時54分01秒 | Japanese datetime       |
-| datetime_t   | 2024-12-10T00:54:01         | DateTime with T separator|
-| compact      | 20241210005401              | Compact format for IDs  |
-| compact_date | 20241210                    | Compact date only       |
-| compact_time | 005401                      | Compact time only       |
-| filename_md  | 20241210005401.md           | Markdown filename       |
-| filename_txt | 20241210005401.txt          | Text filename          |
-| filename_log | 20241210005401.log          | Log filename           |
-| iso          | 2024-12-10T00:54:01+0900    | ISO 8601 format        |
-| iso_basic    | 20241210T005401+0900        | Basic ISO format       |
-| log          | 2024-12-10 00:54:01.123456  | Log format with microseconds|
-| log_compact  | 20241210_005401             | Compact log format     |
-| time         | 00:54:01                    | Time only              |
-| time_jp      | 00時54分01秒                | Japanese time format   |
+| Format Name  | Example                     | Description                  |
+| ------------ | --------------------------- | ---------------------------- |
+| date         | 2024-12-10                  | Standard date format         |
+| date_slash   | 2024/12/10                  | Date with slashes            |
+| date_jp      | 2024年12月10日              | Japanese date format         |
+| datetime     | 2024-12-10 00:54:01         | Standard datetime            |
+| datetime_jp  | 2024年12月10日 00時54分01秒 | Japanese datetime            |
+| datetime_t   | 2024-12-10T00:54:01         | DateTime with T separator    |
+| compact      | 20241210005401              | Compact format for IDs       |
+| compact_date | 20241210                    | Compact date only            |
+| compact_time | 005401                      | Compact time only            |
+| filename_md  | 20241210005401.md           | Markdown filename            |
+| filename_txt | 20241210005401.txt          | Text filename                |
+| filename_log | 20241210005401.log          | Log filename                 |
+| iso          | 2024-12-10T00:54:01+0900    | ISO 8601 format              |
+| iso_basic    | 20241210T005401+0900        | Basic ISO format             |
+| log          | 2024-12-10 00:54:01.123456  | Log format with microseconds |
+| log_compact  | 20241210_005401             | Compact log format           |
+| time         | 00:54:01                    | Time only                    |
+| time_jp      | 00時54分01秒                | Japanese time format         |
 
 ## Debugging
 
