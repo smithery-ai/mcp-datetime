@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.3] - 2024-12-13
+
+- The fix for 0.1.2 did not work, so we are reverting back to the same content as 0.1.1.
+
 ## [0.1.2] - 2024-12-13
 
 ### Changed
