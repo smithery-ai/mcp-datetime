@@ -66,6 +66,7 @@ To install Datetime Formatting Server for Claude Desktop automatically via [Smit
 npx -y @smithery/cli install mcp-datetime --client claude
 ```
 
+### Installing Manually
 If you need to install the package directly (e.g., for development or source code inspection), you can use one of these methods:
 
 - Install from PyPI
